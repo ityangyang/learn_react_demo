@@ -1,5 +1,10 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -29,4 +34,49 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.time-block {
+  width: 500px;
+  height: 100px;
+  background: linear-gradient(#0c54b1, #5792d4);
+  color: #fff;
+
+  display: flex;
+}
+
+.time-block > span {
+  margin-left: 30px;
+
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.seconds {
+  font-size: 42px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.seconds> span {
+  margin: 7px 0 0 5px;
+
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.day {
+  flex-direction: column;
+  justify-content: center;
+}
+.day :first-child {
+  align-self: flex-start;
+  font-size: 20px;
+}
+.isActive {
+    color: #000;
+    font-size: 22px;
+}
+.isdiffbgcolor {
+  background: linear-gradient(red, pink);
 }
