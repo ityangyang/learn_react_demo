@@ -32,7 +32,8 @@ class App extends Component {
             }
           </ol>
         </header> */}
-        <p>{this.props.name}</p>        
+        <p>{this.props.name}</p> 
+               
       </div>
     );
   }
