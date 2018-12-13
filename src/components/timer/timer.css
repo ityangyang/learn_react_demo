@@ -16,6 +16,7 @@
   }
   
   .seconds {
+    width: 155px;
     font-size: 42px;
     font-weight: bolder;
     cursor: pointer;
