@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import './graph.css';
-// 引入 ECharts 主模块
 import echarts from 'echarts/lib/echarts';
-// 引入柱状图
-import  'echarts/lib/chart/bar';
-// 引入提示框和标题组件
+import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 
-
 class Graph extends Component {
+
+    handleClick() {
+        const {handleGraphClick} = this.props;
+        handleGraphClick();
+    }
+
     componentDidMount() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
@@ -33,9 +35,7 @@ class Graph extends Component {
 
     render() {
         return (
-            <div id="main" className="graph">
-                柱状图展示区域
-                <div>123</div>
+            <div id="main" className="graph" onClick={this.handleClick.bind(this)}>
             </div>
         )
     }

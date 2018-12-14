@@ -89,11 +89,11 @@ class Timer extends Component {
     render() {
         return (
             <div className="App">
-                <div className="timer">
+                <div className='timer'>
                     <a href="http://time.tianqi.com/">北京时间-国家授时中心标准时间</a>
-                    <div className="time-block">
+                    <div className={this.props.isDiffBG ? 'isdiffbgcolor time-block' : 'time-block'}>
                         <span>钟表icon</span>
-                        <span className="seconds" onClick={()=>{this.showNowTxt()}}>
+                        <span className="seconds" onClick={(event)=>{this.showNowTxt(); event.preventDefault();}}>
                             {this.state.hour_minutes}
                             <span>{this.state.seconds}</span>
                         </span>
