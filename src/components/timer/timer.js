@@ -12,6 +12,9 @@ class Timer extends Component {
             day: '',
             active: false
         };
+        // this.toggleTxtisActive = this.toggleTxtisActive.bind(this);
+        this.showNowTxt = this.showNowTxt.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -76,29 +79,37 @@ class Timer extends Component {
         });
     }
 
-    showNowTxt() {
-        alert(this.state.now);
+    showNowTxt(e) {
+        console.log(this.state.now);
+        e.stopPropagation();
     }
 
-    toggleTxtisActive() {
-        this.setState({
-            active: !this.state.active
+    toggleTxtisActive = () => {
+        this.setState((preState) => {
+            return {
+                active: !preState.active
+            }
         })
+    }
+
+    handleClick() {
+        const {handleTimerClick} = this.props;
+        handleTimerClick();
     }
 
     render() {
         return (
             <div className="App">
-                <div className='timer'>
+                <div className='timer' onClick={this.handleClick}>
                     <a href="http://time.tianqi.com/">北京时间-国家授时中心标准时间</a>
                     <div className={this.props.isDiffBG ? 'isdiffbgcolor time-block' : 'time-block'}>
                         <span>钟表icon</span>
-                        <span className="seconds" onClick={(event)=>{this.showNowTxt(); event.preventDefault();}}>
+                        <span className="seconds" onClick={this.showNowTxt}>
                             {this.state.hour_minutes}
                             <span>{this.state.seconds}</span>
                         </span>
                         <span className="day">
-                            <span className={this.state.active ? 'isActive' : ''} onMouseEnter={() => {this.toggleTxtisActive()}} onMouseLeave={() => {this.toggleTxtisActive()}}>{this.state.week}</span>
+                            <span className={this.state.active ? 'isActive' : ''} onMouseEnter={this.toggleTxtisActive} onMouseLeave={this.toggleTxtisActive}>{this.state.week}</span>
                             <span>{this.state.day}</span>
                         </span>
                     </div>

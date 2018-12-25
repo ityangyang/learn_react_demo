@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import './graph.css';
-import echarts from 'echarts/lib/echarts';
-import 'echarts/lib/chart/bar';
-import 'echarts/lib/component/tooltip';
-import 'echarts/lib/component/title';
+import echarts from "echarts";
 
 class Graph extends Component {
 
@@ -12,7 +9,7 @@ class Graph extends Component {
         handleGraphClick();
     }
 
-    componentDidMount() {
+    drawGraph(data) {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         // 绘制图表
@@ -28,9 +25,18 @@ class Graph extends Component {
             series: [{
                 name: '销量',
                 type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
+                data: data || [5, 20, 36, 10, 10, 20]
             }]
+            
         });
+    }
+
+    componentDidMount() {
+        this.drawGraph();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.drawGraph(nextProps.histoGramData);
     }
 
     render() {
