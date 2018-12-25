@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './timer.css';
+import CountUp from 'react-countup';
 
 class Timer extends Component {
     constructor(props) {
@@ -100,6 +101,25 @@ class Timer extends Component {
     render() {
         return (
             <div className="App">
+                <CountUp
+                    start={-875.039}
+                    end={160527.012}
+                    duration={2.75}
+                    separator=" "
+                    decimals={4}
+                    decimal=","
+                    prefix="EUR "
+                    suffix=" left"
+                    onEnd={() => console.log('Ended! 👏')}
+                    onStart={() => console.log('Started! 💨')}
+                    >
+                    {({ countUpRef, start }) => (
+                        <div>
+                            <span ref={countUpRef} />
+                            <button onClick={start}>Start</button>
+                        </div>
+                    )}
+                </CountUp>
                 <div className='timer' onClick={this.handleClick}>
                     <a href="http://time.tianqi.com/">北京时间-国家授时中心标准时间</a>
                     <div className={this.props.isDiffBG ? 'isdiffbgcolor time-block' : 'time-block'}>
